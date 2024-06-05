@@ -7,6 +7,7 @@ export default class Combat {
         this.fighters = fighters; 
         this.dices = dices;
         this.actualTurn = actualTurn;
+        this.turn = 1;
     }
 
 
@@ -38,11 +39,17 @@ export default class Combat {
     execute(){
 
     
+        this.printTurnInitialMessages();
+
         if (this.isAttackSuccessful(this.fighters[this.actualTurn].com, this.dices)) {
             this.fighters[this.actualTurn].attack((this.fighters[this.actualTurn^1]), this.dices);
         }
             
+        console.log(this.fighters[0]);
+        console.log(this.fighters[1]);
+
         this.actualTurn = this.actualTurn^1;
+        this.turn += 1;
         
 
         return (this.hasSomeoneDied());
@@ -55,17 +62,17 @@ export default class Combat {
         if (this.fighters[0].isDead() && this.fighters[1].isDead()) {
             console.log("----------------------------------------------------------------------------------------");            
             console.log("----------------------------------------------------------------------------------------");
-            console.log(this.fighters[0].name +" and "+ this.fighters[1].name +" han sido derrotados !!!!!!");
+            console.log(this.fighters[0].name +" and "+ this.fighters[1].name +" han sido derrotados !!!!!!\n");
             someoneIsDead = true;
         }else if (this.fighters[0].isDead()) {
             console.log("----------------------------------------------------------------------------------------");            
             console.log("----------------------------------------------------------------------------------------");
-            console.log(this.fighters[0].name +" ha sido derrotado !!!!!!");
+            console.log(this.fighters[0].name +" ha sido derrotado !!!!!!\n");
             someoneIsDead = true;
         }else if (this.fighters[1].isDead()) {
             console.log("----------------------------------------------------------------------------------------");            
             console.log("----------------------------------------------------------------------------------------");
-            console.log(this.fighters[1].name +" ha sido derrotado !!!!!!");
+            console.log(this.fighters[1].name +" ha sido derrotado !!!!!!\n");
             someoneIsDead = true;
         }
 
@@ -91,9 +98,15 @@ export default class Combat {
             console.log(this.fighters[this.actualTurn].name +" obtiene un "+ die100Result +" y ataca con exito");
             return true;
         }else{
-            console.log(this.fighters[this.actualTurn].name +" obtiene un "+ die100Result +" y falla el ataque");
+            console.log(this.fighters[this.actualTurn].name +" obtiene un "+ die100Result +" y falla el ataque\n");
             return false;
         }
+    }
+
+    printTurnInitialMessages(){
+        console.log("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        console.log("Comienza el asalto "+ this.turn +" para "+ this.fighters[this.actualTurn].name +"!!!!!!!");
+        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     }
 
     printPresentationMessages(){

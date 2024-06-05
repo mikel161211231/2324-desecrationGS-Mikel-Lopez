@@ -92,6 +92,11 @@ export default class Villain extends Character {
         totalDamage += (this.pow + this.str)*(attackType.value)/100;
 
         victim.hp -= Math.ceil(totalDamage);
+
+        if (attackType.id === Attack_Type.NORMAL) {
+            console.log(this.name +" obtiene un "+ attackType.value +", empuña su arma y hace un daño de "+ Math.ceil(totalDamage) +" puntos \n");
+        }
+        
     }
 
    
@@ -103,6 +108,7 @@ export default class Villain extends Character {
         let die5;
         let totalDamage = 0;
         let dieResult = 0;
+        let normalDamage;
 
         for (let i = 0; i < dices.length; i++) {
             const dice = dices[i];
@@ -134,8 +140,13 @@ export default class Villain extends Character {
         totalDamage += ((this.int*this.dur)/100);
         totalDamage = totalDamage*dieResult;
 
+        normalDamage = victim.hp;
         this.normalAttack(victim, attackType);
+        normalDamage -= victim.hp;
+
         victim.hp -= Math.ceil(totalDamage);
+
+        console.log("CRITICAL HIT!!!!! "+ this.name +" obtiene un "+ attackType.value +" y ejerce un daño de "+ (Math.ceil(totalDamage) + normalDamage)+" puntos \n");
 
     }
 }
