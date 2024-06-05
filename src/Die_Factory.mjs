@@ -1,5 +1,5 @@
 import { Die_Id } from "./constants.mjs";
-import Die from "./die.mjs";
+import Die from "./Die.mjs";
 
 
 
