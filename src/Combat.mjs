@@ -38,7 +38,7 @@ export default class Combat {
     execute(){
 
         if (this.isAttackSuccessful(this.fighters[this.actualTurn].com, this.dices)) {
-            this.fighters[this.actualTurn].attack();
+            this.fighters[this.actualTurn].attack(this.fighters[this.actualTurn]^1, this.dices);
         }else{
             this.actualTurn = this.actualTurn^1;
             console.log("Attack not successful!!!!");
