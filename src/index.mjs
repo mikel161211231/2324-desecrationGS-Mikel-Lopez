@@ -15,8 +15,9 @@ function init() {
   // console.log(data);
 
   const dices = DieFactory.createAllDices();
+  // console.log(dices);
 
   const trainingGround = TrainingGround.create(data);
-  console.log(trainingGround);
+  // console.log(trainingGround);
 
 }

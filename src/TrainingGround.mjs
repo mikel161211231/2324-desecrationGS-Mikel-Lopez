@@ -1,5 +1,4 @@
-
-
+import { data } from "./db/client.mjs";
 
 
 export default class TrainingGround {
@@ -9,13 +8,12 @@ export default class TrainingGround {
     }
 
 
-    static create(data){
+    static create(){
         return (new TrainingGround(data));
     }
 
     createSuperHero(){
 
-        
 
 
 
