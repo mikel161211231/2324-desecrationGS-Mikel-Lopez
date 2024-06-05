@@ -7,8 +7,9 @@ import { data } from "./db/client.mjs";
 
 
 
-init();
+const combat = init();
 
+combat.execute();
 
 
 function init() {
@@ -29,4 +30,6 @@ function init() {
 
   const combat = Combat.create(dices, superHero, villain);
   // console.log(combat);
+
+  return combat;
 }

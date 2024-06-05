@@ -1,3 +1,4 @@
+import { Die_Id } from "./constants.mjs";
 
 
 export default class Combat {
@@ -31,5 +32,38 @@ export default class Combat {
         }
 
         return (new Combat(fighters, dices, actualTurn));
+    }
+
+
+    execute(){
+
+        if (this.isAttackSuccessful(this.fighters[this.actualTurn].com, this.dices)) {
+            this.fighters[this.actualTurn].attack();
+        }else{
+            this.actualTurn = this.actualTurn^1;
+            console.log("Attack not successful!!!!");
+        }
+    }
+
+    isAttackSuccessful(com, dices){
+
+        let die100;
+        let die100Result;
+
+        for (let i = 0; i < dices.length; i++) {
+            const dice = dices[i];
+            
+            if (dice.id === Die_Id.DIE_100) {
+                die100 = dice;
+            }
+        }
+
+        die100Result = die100.roll();
+
+        if (com >= die100Result) {
+            return true;
+        }else{
+            return false;
+        }
     }
 }
