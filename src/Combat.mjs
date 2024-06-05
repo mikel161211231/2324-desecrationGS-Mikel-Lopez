@@ -105,7 +105,7 @@ export default class Combat {
 
     printTurnInitialMessages(){
         console.log("\n\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        console.log("Comienza el asalto "+ this.turn +" para "+ this.fighters[this.actualTurn].name +"!!!!!!!");
+        console.log("Comienza el asalto "+ this.turn +", ataque para "+ this.fighters[this.actualTurn].name +"!!!!!!!");
         console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
     }
 
