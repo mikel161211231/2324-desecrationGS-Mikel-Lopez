@@ -1,3 +1,4 @@
+import Combat from "./Combat.mjs";
 import DieFactory from "./Die_Factory.mjs";
 import TrainingGround from "./TrainingGround.mjs";
 import { Die_Id } from "./constants.mjs";
@@ -25,4 +26,7 @@ function init() {
 
   const villain = trainingGround.createVillain();
   // console.log(villain);
+
+  const combat = Combat.create(dices, superHero, villain);
+  // console.log(combat);
 }
