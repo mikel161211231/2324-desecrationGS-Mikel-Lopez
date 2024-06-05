@@ -19,4 +19,12 @@ export default class Character {
     attack(){
         // Vacio, las clases que lo hereden tendran el contenido
     }
+
+    isDead(){
+        if (this.hp < 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

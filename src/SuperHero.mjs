@@ -10,6 +10,14 @@ export default class SuperHero extends Character {
         super(name, int, str, dur, spe, pow, com, hp);
     }
 
+    isDead(){
+        if (this.hp < 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     attack(victim, dices){
 
         const attackType = this.attackType(dices);
@@ -40,7 +48,7 @@ export default class SuperHero extends Character {
 
         let die20;
         let die20Result;
-        let attackType;
+        let attackType = { id:Attack_Type.PREPARING, value:0};
 
         for (let i = 0; i < dices.length; i++) {
             const dice = dices[i];
@@ -114,7 +122,6 @@ export default class SuperHero extends Character {
         let die3;
         let totalDamage = 0;;
         let die3Result = 0;
-        let attackType;
 
         for (let i = 0; i < dices.length; i++) {
             const dice = dices[i];
@@ -147,7 +154,6 @@ export default class SuperHero extends Character {
         let die5;
         let totalDamage = 0;
         let dieResult = 0;
-        let attackType;
 
         for (let i = 0; i < dices.length; i++) {
             const dice = dices[i];

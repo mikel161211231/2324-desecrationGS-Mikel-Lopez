@@ -9,8 +9,16 @@ import { data } from "./db/client.mjs";
 
 const combat = init();
 
-combat.execute();
+combat.printPresentationMessages();
 
+// combat.execute();
+let isCombatOver;
+
+do {
+
+  isCombatOver = combat.execute();
+
+} while (!isCombatOver);
 
 function init() {
 

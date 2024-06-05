@@ -10,8 +10,10 @@ export const Die_Id = {
 
 export const Attack_Type = {
 
+    PREPARING: 110,
+
     NORMAL: 120,
-    
+
     FUMBLE_1: 121,
     FUMBLE_2: 122,
 

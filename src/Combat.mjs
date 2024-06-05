@@ -37,12 +37,39 @@ export default class Combat {
 
     execute(){
 
+    
         if (this.isAttackSuccessful(this.fighters[this.actualTurn].com, this.dices)) {
-            this.fighters[this.actualTurn].attack(this.fighters[this.actualTurn]^1, this.dices);
-        }else{
-            this.actualTurn = this.actualTurn^1;
-            console.log("Attack not successful!!!!");
+            this.fighters[this.actualTurn].attack((this.fighters[this.actualTurn^1]), this.dices);
         }
+            
+        this.actualTurn = this.actualTurn^1;
+        
+
+        return (this.hasSomeoneDied());
+    }
+
+    hasSomeoneDied(){
+
+        let someoneIsDead = false;
+
+        if (this.fighters[0].isDead() && this.fighters[1].isDead()) {
+            console.log("----------------------------------------------------------------------------------------");            
+            console.log("----------------------------------------------------------------------------------------");
+            console.log(this.fighters[0].name +" and "+ this.fighters[1].name +" han sido derrotados !!!!!!");
+            someoneIsDead = true;
+        }else if (this.fighters[0].isDead()) {
+            console.log("----------------------------------------------------------------------------------------");            
+            console.log("----------------------------------------------------------------------------------------");
+            console.log(this.fighters[0].name +" ha sido derrotado !!!!!!");
+            someoneIsDead = true;
+        }else if (this.fighters[1].isDead()) {
+            console.log("----------------------------------------------------------------------------------------");            
+            console.log("----------------------------------------------------------------------------------------");
+            console.log(this.fighters[1].name +" ha sido derrotado !!!!!!");
+            someoneIsDead = true;
+        }
+
+        return someoneIsDead;
     }
 
     isAttackSuccessful(com, dices){
@@ -61,9 +88,26 @@ export default class Combat {
         die100Result = die100.roll();
 
         if (com >= die100Result) {
+            console.log(this.fighters[this.actualTurn].name +" obtiene un "+ die100Result +" y ataca con exito");
             return true;
         }else{
+            console.log(this.fighters[this.actualTurn].name +" obtiene un "+ die100Result +" y falla el ataque");
             return false;
         }
+    }
+
+    printPresentationMessages(){
+
+        console.log("WELCOME TO THE COMBAT ARENA !!!!");
+        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        console.log("Hoy combatirán "+ this.fighters[0].name +" y "+ this.fighters[1].name +" !!!!!!!");
+        console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        console.log("Listado de atributos");
+        console.log("-----------------------------------------------\n");
+        console.log(this.fighters[0]);
+        console.log(this.fighters[1]);
+        console.log("\n-----------------------------------------------");
+        console.log("El primer combate va para "+ this.fighters[this.actualTurn].name);
+        console.log("-----------------------------------------------\n");
     }
 }
