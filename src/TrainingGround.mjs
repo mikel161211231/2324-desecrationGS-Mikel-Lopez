@@ -1,4 +1,5 @@
 import SuperHero from "./SuperHero.mjs";
+import Villain from "./Villain.mjs";
 import { data } from "./db/client.mjs";
 
 
@@ -38,6 +39,27 @@ export default class TrainingGround {
     }
 
     createVillain(){
+        let villain = null;
+        let index = 0;
 
+        do {
+            villain = this.data[index];
+            index++;
+        } while (villain.name !== "Junkpile");
+
+        
+        let name = villain.name; // Nombre del personaje
+        let int = villain.powerstats.intelligence; // Inteligencia
+        let str = villain.powerstats.strength; // Fuerza
+        let dur = villain.powerstats.speed; // Durabilidad
+        let spe = villain.powerstats.durability; // Velocidad
+        let pow = villain.powerstats.power; // Poder
+        let com = villain.powerstats.combat; // Combate 
+        let hp = str*10; // Vida
+
+        if (hp > 666) {
+            hp = 666;
+        }
+        return (new Villain(name, int, str, dur, spe, pow, com, hp));
     }
 }

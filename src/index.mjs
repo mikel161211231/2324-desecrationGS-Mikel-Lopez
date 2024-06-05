@@ -22,4 +22,7 @@ function init() {
 
   const superHero = trainingGround.createSuperHero();
   // console.log(superHero);
+
+  const villain = trainingGround.createVillain();
+  // console.log(villain);
 }
