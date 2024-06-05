@@ -1,3 +1,5 @@
+import DieFactory from "./Die_Factory.mjs";
+import { Die_Id } from "./constants.mjs";
 import { getData } from "./db/client.mjs";
 
 
@@ -11,6 +13,6 @@ function init() {
 
   const data = getData();
 
+  const dices = DieFactory.createAllDices();
 
-  
 }
