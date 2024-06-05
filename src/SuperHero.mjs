@@ -176,7 +176,7 @@ export default class SuperHero extends Character {
             }
         }
 
-        totalDamage += ((this.int*this.dur))/100;
+        totalDamage += ((this.int*this.dur)/100);
         totalDamage = totalDamage*dieResult;
 
         this.normalAttack(victim, attackType);
