@@ -20,4 +20,6 @@ function init() {
   const trainingGround = TrainingGround.create(data);
   // console.log(trainingGround);
 
+  const superHero = trainingGround.createSuperHero();
+  // console.log(superHero);
 }
